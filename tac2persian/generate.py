@@ -1,5 +1,6 @@
 import torch
 import numpy as np
+import soundfile as sf
 import librosa
 import argparse
 import os
@@ -86,7 +87,7 @@ def main(args):
     
     # Save wave
     wav_path = os.path.join(args.output_path, args.filename + ".wav")
-    librosa.output.write_wav(wav_path, out_wav, params_wavernn["audio"]["sample_rate"])
+    sf.write(wav_path, out_wav, params_wavernn["audio"]["sample_rate"])
 
     # Save attention
     attn_path = os.path.join(args.output_path, args.filename + "_attn")
